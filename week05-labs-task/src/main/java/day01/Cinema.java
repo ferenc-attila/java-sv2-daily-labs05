@@ -14,15 +14,19 @@ public class Cinema {
 
     public List<String> findMovieByTime(LocalDateTime time) {
         List<String> moviesCanWatch = new ArrayList<>();
-        for (int i = 0; i < movies.size(); i++) {
-            List<LocalDateTime> timesOfPerformance = movies.get(i).getTimesOfPerformance();
+        for (Movie movie: movies) {
+            List<LocalDateTime> timesOfPerformance = movie.getTimesOfPerformance();
             for (int j = 0; j < timesOfPerformance.size(); j++) {
-                if (time.equals(timesOfPerformance.get(j))) {
-                    moviesCanWatch.add(movies.get(i).getTitle());
+                if (isEqualsTime(time, timesOfPerformance, j)) {
+                    moviesCanWatch.add(movie.getTitle());
                 }
             }
         }
         return moviesCanWatch;
+    }
+
+    private boolean isEqualsTime(LocalDateTime time, List<LocalDateTime> timesOfPerformance, int j) {
+        return time.equals(timesOfPerformance.get(j));
     }
 
     public List<Movie> getMovies() {
