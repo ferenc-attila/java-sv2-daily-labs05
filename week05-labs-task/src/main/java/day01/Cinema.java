@@ -25,11 +25,11 @@ public class Cinema {
         return moviesCanWatch;
     }
 
-    private boolean isEqualsTime(LocalDateTime time, List<LocalDateTime> timesOfPerformance, int j) {
-        return time.equals(timesOfPerformance.get(j));
-    }
-
     public List<Movie> getMovies() {
         return movies;
+    }
+
+    private boolean isEqualsTime(LocalDateTime time, List<LocalDateTime> timesOfPerformance, int j) {
+        return time.equals(timesOfPerformance.get(j));
     }
 }
